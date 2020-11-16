@@ -46,4 +46,4 @@ Please do not hesitate to report bugs by opening a new issue in the repositiry
 
 Author
 
-(https://github.com/yasminhillis/)[Yasmin Hillis]
+[https://github.com/yasminhillis/!](Yasmin Hillis)
