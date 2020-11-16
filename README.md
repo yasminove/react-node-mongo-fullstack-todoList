@@ -19,11 +19,11 @@ Then, cd into the repository using this command:
     cd react-node-mongo-fullstack-todoList
 Install the project depdencies:
 
-    `npm install`
+    npm install
 
 Now, run this command to build the project
 
-    `npm run dev`
+    npm run dev
 
 Navigate to http://127.0.0.1:3000/ to view the project.
 
