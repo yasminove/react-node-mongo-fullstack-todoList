@@ -1,7 +1,7 @@
 Fullstack todo list
 
 
-Fullstack todo list is a web app for users to add todos and delte them when they are done
+Fullstack todo list is a web app for users to add todos and delete them when they are done
 
 Prerequisites
 
