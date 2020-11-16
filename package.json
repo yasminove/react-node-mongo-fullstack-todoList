@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./server/index.js", 
+    "start": "nodemon ./server/index.js",
     "dev": "concurrently \"cd client && npm start\" \"npm start\""
   },
   "repository": {
@@ -23,6 +23,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "fetch": "^1.1.0",
+    "mongoose": "^5.10.14",
     "nodemon": "^2.0.6"
   }
 }
