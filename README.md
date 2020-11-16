@@ -1,11 +1,11 @@
-Fullstack todo list
+### Fullstack todo list
 
 
-Fullstack todo list is a web app for users to add todos and delete them when they are done
+#### Fullstack todo list is a web app for users to add todos and delete them when they are done
 
-Prerequisites
+#### Prerequisites
 
-This project has dependencies installed via npm, which is a package manager for node. In order to view the project, you should have node installed on your machine. If you don't have it, you can install it here
+This project has dependencies installed via npm, which is a package manager for node. In order to view the project, you should have node installed on your machine. If you don't have it, you can install it here: https://nodejs.org/en/
 
 How To Run The Application Locally
 
@@ -46,4 +46,4 @@ Please do not hesitate to report bugs by opening a new issue in the repositiry
 
 Author
 
-Yasmin Hillis
+[https://github.com/yasminhillis/](Yasmin Hillis)
