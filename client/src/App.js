@@ -1,16 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
-import Form from './components/form'
+import Form from './components/form'; 
+import React, { Component } from 'react'
+import store from './store.js'; 
+import { Provider } from 'react-redux'; 
 
 
-function App() {
-  return (
-    <div className="App">
-      <header>
+class App extends Component {
+  componentDidMount(){
+    console.log('hiiii');
+  }
+  render(){
+    return (
+    
+    
+      <Provider store={store}>
       <Form/>
-      </header>
-    </div>
+      </Provider>
+
+
   );
+  }
+  
 }
 
 export default App;
