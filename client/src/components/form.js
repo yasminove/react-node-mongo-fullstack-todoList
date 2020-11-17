@@ -29,9 +29,9 @@ class Form extends Component {
         this.props.getTodos()
         console.log(this.props.getTodos(), 'this.props.getTodos()');
         // axios.get('http://localhost:4000/').then(res => {
-            this.setState({
-                todos: this.props.todos
-            })
+            // this.setState({
+            //     todos: this.props.todos
+            // })
             console.log(this.state, 'this.state4444');
 
         // })
@@ -50,6 +50,7 @@ class Form extends Component {
        
     }
     handleClick = (e) => {
+        console.log('heree');
         e.preventDefault();
         // console.log(this.state, '9999');
         // this.state.todos.push(this.state.todo)
