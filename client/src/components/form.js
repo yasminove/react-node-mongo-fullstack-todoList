@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
+import { connect } from 'react-redux';
+import { getTodos, addTodo, deleteTodo } from '../actions/todos';
+import PropTypes from 'prop-types'
+
 import { Redirect } from 'react-router-dom';
 import { Button, Container, FormControl, FormGroup, ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 class Form extends Component {
+    static propTypes = {
+        todos: PropTypes.array.isRequired, 
+        getTodos: PropTypes.func.isRequired, 
+        addTodo: PropTypes.func.isRequired
+    }
     state = {
         todos: [], 
         todo: {
@@ -11,12 +21,20 @@ class Form extends Component {
             text: ''
         }
     }
+   
     componentDidMount(){
-        axios.get('http://localhost:4000/').then(res => {
+        console.log(this.props, 'props');
+        console.log('heyyyyyyy99999966666');
+        console.log(this.props.todos, 'this.props.todos');
+        this.props.getTodos()
+        console.log(this.props.getTodos(), 'this.props.getTodos()');
+        // axios.get('http://localhost:4000/').then(res => {
             this.setState({
-                todos: res.data
+                todos: this.props.todos
             })
-        })
+            console.log(this.state, 'this.state4444');
+
+        // })
     }
     handleChange = (e) => {
         console.log(e.target.value, 'val');
@@ -36,15 +54,16 @@ class Form extends Component {
         // console.log(this.state, '9999');
         // this.state.todos.push(this.state.todo)
         var todo = this.state.todo
-        axios.post(`http://localhost:4000/todo/add`, todo)
-        .then(res => {
-            this.setState({
-                todos: res.data
-            })
-            return <Redirect to='/'/>
+        this.props.addTodo(todo)
+        // axios.post(`http://localhost:4000/todo/add`, todo)
+        // .then(res => {
+        //     this.setState({
+        //         todos: res.data
+        //     })
+        //     return <Redirect to='/'/>
             
-        })
-        .catch(err => console.log(err, 'err'))
+        // })
+        // .catch(err => console.log(err, 'err'))
         // console.log('hiiiiii66666669999');
         this.setState({
             todo: {
@@ -88,12 +107,13 @@ class Form extends Component {
         // })
         const text = e.target.innerHTML
         console.log(text, 'text');
-        axios.delete(`http://localhost:4000/todo/delete/${text}`)
-            .then(res => {
-                console.log(res, 'this is the resssss')
-                window.location.href = '/'
-            })
-            .catch(err => console.log(err, 'err'))
+        this.props.deleteTodo(text)
+        // axios.delete(`http://localhost:4000/todo/delete/${text}`)
+        //     .then(res => {
+        //         console.log(res, 'this is the resssss')
+        //         window.location.href = '/'
+        //     })
+        //     .catch(err => console.log(err, 'err'))
 
     }
     render(){
@@ -112,7 +132,7 @@ class Form extends Component {
             </FormGroup>
             <div>
                 <ListGroup>
-                    {this.state.todos.map((todo) => (
+                    {this.props.todos.map((todo) => (
                         <ListGroup.Item className="mt-4" onClick={this.handleSpanClick.bind(this)} style={{'borderTop': '1px solid #e4e4e4'}}>{todo.text}</ListGroup.Item>
                     ))}
                 </ListGroup>
@@ -125,4 +145,10 @@ class Form extends Component {
     }
 }
 
-export default Form;
+const mapStateToProps = state => ({
+    todos: state.todos.todos,
+    state: state
+})
+
+
+export default connect(mapStateToProps, { getTodos, addTodo, deleteTodo })(Form);
