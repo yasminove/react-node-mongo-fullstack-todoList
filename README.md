@@ -38,7 +38,7 @@ Node
 
 ### Next Steps:
 
-I am planning to use redux.
+I am planning to use redux.  ---------> DONE :white_check_mark:
 
 ### Bug reports
 
