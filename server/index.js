@@ -1,18 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 var cors = require('cors');
-const path = require('path')
 const app = express(); 
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, 'build')))
 
-
-app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'))
-})
 app.use(express.json())
-mongoose.connect('mongodb://localhost/todo-app', 
+mongoose.connect('mongodb://localhost:27017/todo-app', 
     { useNewUrlParser: true }
 )
 .then(() => console.log('Mogodb connected'))
@@ -52,11 +46,6 @@ app.delete('/todo/delete/:text', (req, res) => {
         })
     }).catch(err => console.log('Err in finding todo', err))
 })
-
-
-
-
-
 
 
 const PORT = process.env.PORT || 4000
