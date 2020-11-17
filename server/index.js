@@ -7,7 +7,7 @@ app.use(cors());
 
 
 app.use(express.json())
-mongoose.connect('mongodb://localhost:27017/todo-app', 
+mongoose.connect('mongodb://mongo:27017/todo-app', 
     { useNewUrlParser: true }
 )
 .then(() => console.log('Mogodb connected'))
@@ -15,7 +15,7 @@ mongoose.connect('mongodb://localhost:27017/todo-app',
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.get('*', (req, res) => {
-    es.sendFile(path.join(__dirname + '/client/build/index.html'));
+    res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
       
 const Todo = require('./models/Todo')
