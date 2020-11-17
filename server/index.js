@@ -12,6 +12,16 @@ mongoose.connect('mongodb://localhost:27017/todo-app',
 .then(() => console.log('Mogodb connected'))
 .catch(err => console.log('Err', err))
 
+// if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.join(__dirname, 'client/build')));
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname+'/client/build/index.html'));
+      });
+      
+// }
+
+
+
 
 const Todo = require('./models/Todo')
 
