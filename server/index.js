@@ -7,24 +7,28 @@ app.use(cors());
 
 
 app.use(express.json())
-mongoose.connect('mongodb+srv://yasmin123:yasmin123@todolist.nniow.mongodb.net/<dbname>?retryWrites=true&w=majority', 
+mongoose.connect('mongodb://localhost:27017/todo-app', 
     { useNewUrlParser: true }
 )
 .then(() => console.log('Mogodb connected'))
 .catch(err => console.log('Err', err))
 
-app.use(express.static(path.join(__dirname, 'client/build')));
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname , '..', '/client/build/index.html'));
-});
+
       
 const Todo = require('./models/Todo')
 
-app.get('/', (req, res) => {
+app.get('/todo/get', (req, res) => {
     Todo.find()
     .then(todos => res.send(todos))
     .catch(err => console.log(err))
 })
+
+
+
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build/index.html'));
+});
 
 
 app.post('/todo/add', (req, res) => {

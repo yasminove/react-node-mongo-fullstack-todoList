@@ -3,7 +3,7 @@ import axios from 'axios';
 import { GET_TODOS, ADD_TODO, DELETE_TODO } from './types'; 
 
 export const getTodos = () => (dispatch) => {
-    axios.get('http://localhost:4000/')
+    axios.get('http://localhost:4000/todo/get')
         .then(res => {
             console.log(res, 'res here');
             dispatch({
@@ -17,6 +17,7 @@ export const getTodos = () => (dispatch) => {
 export const addTodo = (todo) => (dispatch) => {
     axios.post('http://localhost:4000/todo/add', todo)
         .then(res => {
+            console.log(res, 'res addTodo here');
             dispatch({
                 type: ADD_TODO, 
                 payload: res.data

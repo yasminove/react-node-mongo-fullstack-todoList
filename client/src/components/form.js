@@ -27,7 +27,7 @@ class Form extends Component {
         console.log('heyyyyyyy99999966666');
         console.log(this.props.todos, 'this.props.todos');
         this.props.getTodos()
-        console.log(this.props.getTodos(), 'this.props.getTodos()');
+        // console.log(this.props.getTodos(), 'this.props.getTodos()');
         // axios.get('http://localhost:4000/').then(res => {
             // this.setState({
             //     todos: this.props.todos
@@ -56,21 +56,23 @@ class Form extends Component {
         // this.state.todos.push(this.state.todo)
         var todo = this.state.todo
         this.props.addTodo(todo)
-        // axios.post(`http://localhost:4000/todo/add`, todo)
-        // .then(res => {
-        //     this.setState({
-        //         todos: res.data
-        //     })
-        //     return <Redirect to='/'/>
-            
-        // })
-        // .catch(err => console.log(err, 'err'))
-        // console.log('hiiiiii66666669999');
+        window.location.href = '/'
+        // return <Redirect to='/'/>
         this.setState({
             todo: {
                 text: ''
             }
-        })
+        }) 
+        // axios.post(`http://localhost:4000/todo/add`, todo)
+        // .then(res => {
+            // this.setState({
+            //     todos: this.props.addTodo(todo)
+            // })
+         
+        // })
+        // .catch(err => console.log(err, 'err'))
+        // console.log('hiiiiii66666669999');
+        
     }
     handleSpanClick = (e) => {
         console.log(e.target.innerHTML, 'llll');
@@ -118,8 +120,9 @@ class Form extends Component {
 
     }
     render(){
-        console.log(this.state, 'state');
-        console.log(this.state.todos, 'todos');
+        // console.log(this.state, 'state');
+        // console.log(this.state.todos, 'todos');
+        console.log(this.props, 'this.props77777777777777');
         return (
             <Container className="mt-4">
 
@@ -134,7 +137,7 @@ class Form extends Component {
             <div>
                 <ListGroup>
                     {this.props.todos.map((todo) => (
-                        <ListGroup.Item className="mt-4" onClick={this.handleSpanClick.bind(this)} style={{'borderTop': '1px solid #e4e4e4'}}>{todo.text}</ListGroup.Item>
+                        <ListGroup.Item key={todo.id} className="mt-4" onClick={this.handleSpanClick.bind(this)} style={{'borderTop': '1px solid #e4e4e4'}}>{todo.text}</ListGroup.Item>
                     ))}
                 </ListGroup>
             </div>
