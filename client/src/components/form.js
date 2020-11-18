@@ -56,13 +56,15 @@ class Form extends Component {
         // this.state.todos.push(this.state.todo)
         var todo = this.state.todo
         this.props.addTodo(todo)
-        window.location.href = '/'
-        // return <Redirect to='/'/>
+        
         this.setState({
             todo: {
                 text: ''
             }
         }) 
+        window.location.href = '/'
+        return <Redirect to='/todo/get'/>
+       
         // axios.post(`http://localhost:4000/todo/add`, todo)
         // .then(res => {
             // this.setState({
