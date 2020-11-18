@@ -7,7 +7,7 @@ app.use(cors());
 
 
 app.use(express.json())
-mongoose.connect('mongodb://localhost/todo-app', 
+mongoose.connect('mongodb+srv://yasmin123:yasmin123@todolist.nniow.mongodb.net/<dbname>?retryWrites=true&w=majority', 
     { useNewUrlParser: true }
 )
 .then(() => console.log('Mogodb connected'))
